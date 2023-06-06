@@ -1,6 +1,9 @@
 const http = require('http')
 const fs = require('fs')
 const routing = require('./routing')
+const _= require("lodash")
+
+
 
 const server = http.createServer((request, response) => {
     //request coming from client
@@ -13,7 +16,7 @@ const server = http.createServer((request, response) => {
     path = routing(request, path).path;
     response.statusCode = routing(request, path).status
 
-
+   
     fs.readFile(path, (err, data) => {
         if (err) {
             console.log(err)
@@ -26,7 +29,7 @@ const server = http.createServer((request, response) => {
 
 });
 
-server.listen(3001, 'localhost', () => {
-    console.log('listening on port 3001')
+server.listen(3000, 'localhost', () => {
+    console.log('listening on port 3000')
 });
 

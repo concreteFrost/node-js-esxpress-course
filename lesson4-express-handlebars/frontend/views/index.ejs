@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/index.css" />
+    <title>Data Flow Test</title>
+  </head>
+  <body>
+    <%- include('../components/navbar.ejs') %>
+    <main>
+      <div class="posts-container">
+        <ul>
+          <% posts.forEach((post) => { %>
+          <li class="post">
+            <div class="author">
+              <h4>AUTHOR:</h4>
+              <p><%= post.author %></p>
+            </div>
+            <div class="message">
+              <p>MESSAGE:</p>
+              <p><%= post.content %></p>
+            </div>
+            <div class="action-btn">
+              <button>Edit</button>
+              <button>Delete</button>
+            </div>
+          </li>
+          <% }) %>
+        </ul>
+      </div>
+      <div>
+        <h2>Write a post</h2>
+
+        <form action="/add-post" class="container" method="POST">
+          <div>
+            <label>Your name</label> <input type="text" name="author" />
+          </div>
+          <div>
+            <label>Content</label>
+            <textarea cols="30" rows="10" name="content"></textarea>
+          </div>
+          <div><button>Submit</button></div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
